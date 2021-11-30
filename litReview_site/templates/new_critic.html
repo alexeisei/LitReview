@@ -2,14 +2,14 @@
 {% load static %}
 {% block content %}
 <div class="container mt-5">
-    <h1> {{user.username.upper}} You wish to create a new critic</h1>
+    <h1> {{user.username.upper}} You wish to create a new review</h1>
     <form class="post-form border border-dark border-5 p-3" enctype="multipart/form-data" method="POST">
         {% csrf_token %}
         <p> Book / Article </p>
         {{ form_tik.as_p }}
-        <p> Your critic </p>
+        <p> Your review </p>
         {{ form_crit.as_p }}
-        <input type="submit" value="Confirm your critic">
+        <input type="submit" value="Confirm your review">
     </form>
     <a class="" href="{% url 'flux' %}">Return to your FLUX page</a>
 </div>
