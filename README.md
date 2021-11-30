@@ -1,6 +1,6 @@
 # LitReview
 
-1.Introduction
+1. Introduction
 
 An introductory work to MVT using the basics of DJANGO.
 
@@ -11,7 +11,8 @@ This is a web application that allows :
 - Users can post their own reviews of books
 - Other users can answer these reviews via an answer to the ticket
 
-2-Install the app 
+
+2. Install the app 
 
 - Download the ZIP files and unzip them in the repository you wish
 - Install venv by typing in your terminal :
@@ -31,6 +32,7 @@ env\Scripts\activate
 pip install -r requirements.txt
 ```
 
+
 3. Launch the DJANGO server
 
 Go to the "LitReview" repository then type in :
@@ -38,6 +40,7 @@ $ python manage.py runserver
 
 You can then access the site via your web browser at the following URL:
 http://127.0.0.1:8000/
+
 
 4. Using the app
 
