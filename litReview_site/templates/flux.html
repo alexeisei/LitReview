@@ -6,7 +6,7 @@
     <h3 class="titre"> Hello {{user.username.upper}}, welcome on your FLUX page </h3>
 </div>
 <div class="d-flex justify-content-around m-5">
-    <a class="btn btn-primary" href="{% url 'new-critic' %}">Create a new critic</a>
+    <a class="btn btn-primary" href="{% url 'new-critic' %}">Create a new review</a>
     <a class="btn btn-primary" href="{% url 'new-ticket' %}">Create a new ticket</a>
 </div>
 
@@ -21,17 +21,17 @@
     <img class="" src="../images/{{ ticket.image}}">
     {% endif %}
     <p> Created on : {{ ticket.time_created|date:'d/m/Y H:i' }}</p>
-    <a class="btn-add-critics" href="{% url 'answer-critic' ticket.id %}">Answer this ticket with a critic</a>
+    <a class="btn-add-critics" href="{% url 'answer-critic' ticket.id %}">Answer this ticket with a review</a>
 </div>
 {% endfor %}
 
 {% for critique in critiques %}
 <div class="container bg-success text-dark border border-dark border-5 mb-5 p-3">
-    <h3> Critics</h3>
+    <h3> Review</h3>
     {% if critique.user.username == user.username %}
-    <p>You posted a critic</p>
+    <p>You posted a review</p>
     {% else %}
-    <p> {{critique.user.username}} has posted a critic</p>
+    <p> {{critique.user.username}} has posted a review</p>
     {% endif %}
     <p> {{ critique.time_created|date:'d/m/Y H:i' }}</p>
     <p> Headline: {{critique.headline.upper}} - Rating: {{critique.rating}}</p>
