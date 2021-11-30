@@ -39,4 +39,19 @@ $ python manage.py runserver
 You can then access the site via your web browser at the following URL:
 http://127.0.0.1:8000/
 
+4. Using the app
+
+You can now register a new user of use one of the following
+- Alexandre (password : volvic1985)
+- Karim (password : Djangotest2021)
+- Marie (password : Djangotest2021
+- Thomas (password : Djangotest2021)
+
+You can also access the admin interface with
+- Superuser (password : 123456)
+
+When loged in, you can :
+- follow other users by typing their name in the search bar and unfollow them
+- create a review or a ticket, edit and delete them
+- see the history of posted content
 
