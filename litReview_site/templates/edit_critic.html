@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <div class="container border border-dark border-5 p-4">
+            <div>{{user.username.upper}} Edit your critic:</div>
+            <div class="container w-75 border border-dark mt-2 mb-2 p-2">
+                <div class="row">
+                        <div class="col-10">You asked a critic</div>
+                        <div class="col-2">{{ticket.time_created|date:'d/m/Y H:i'}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-10">{{ticket.title}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-10">{{ticket.description}}</div>
+                    </div>
+                    {% if ticket.image %}
+                        <div class="row mt-2 mb-2">
+                            <div class="col-10">
+                                <img src="{{ticket.image.url}}"/>
+                            </div>
+                        </div>
+                {% endif %}
+            </div>
+    </div>
+
+    <form method="POST" class="post-form border border-dark border-5 p-3">
+        {% csrf_token %}
+        {{edit_review_form.as_p}}
+
+        <input type="submit" value="Post your critic">
+    </form>
+    <a class="" href="{% url 'flux' %}" >Return to your FLUX page</a>
+    <a class="nav-link" href="{% url 'show-critics' %}">Cancel</a>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+
+    <div class="container d-flex justify-content-center mb-3 mt-5">
+    <h3>My posts (Tickets et critics)</h3>
+</div>
+<div class="container">
+    {% for contrib in all_user_contributions %}
+        {% if contrib.title %}
+            <div class="container bg-white text-dark border border-dark border-5 mb-5 p-3">
+                <div class="d-flex justify-content-center text-dark"><h3>Awaiting ticket</h3></div>
+                <div class="row mt-2 mb-2">
+                    <div class="col-10">You asked a critic</div>
+                    <div class="col-2">{{contrib.time_created|date:'d/m/Y H:i'}}</div>
+                </div>
+                <div class="row mt-2 mb-2">
+                    <div class="col-10">{{contrib.title}}</div>
+                </div>
+                <div class="row mt-2 mb-2">
+                    <div class="col-10">{{contrib.description}}</div>
+                </div>
+                {% if contrib.image %}
+                    <div class="row mt-2 mb-2">
+                        <div class="col-10">
+                            <img src="../media/{{ contrib.image}}"/>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="row justify-content-end mt-2 mb-2">
+                    <div class="col-2">
+                        <a href="{% url 'edit-ticket' contrib.id %}" class="btn btn-primary">Edit</a>
+                        <a href="{% url 'delticket' contrib.id %}" class="btn btn-primary">Delete</a>
+                    </div>
+                </div>
+                </div>
+        {% else %}
+            <div class="container bg-success text-black border border-dark border-5 mb-5 p-3">
+                <div class="d-flex justify-content-center text-dark"><h3>Critic</h3></div>
+                <div class="row mt-2 mb-2">
+                        <div class="col-10">You posted a critic</div>
+                        <div class="col-2">{{contrib.time_created|date:'d/m/Y H:i'}}</div>
+                </div>
+                <div class="row mt-2 mb-2">
+                        <div class="col-10">{{contrib.body}}</div>
+                </div>
+                <div class="container bg-white text-dark border border-dark mb-3 mt-3">
+                    <div class="row mt-2 mb-2">
+                        <div class="col-10">Ticket - {{contrib.ticket.user}}</div>
+                    </div>
+                    <div class="row mt-2 mb-2">
+                        <div class="col-10">{{contrib.ticket.title}}</div>
+                        <div class="col-10"> id ticket : {{contrib.ticket.id}}</div>
+                        <div class="col-10"> id review : {{contrib.id}}</div>
+                    </div>
+                    {% if contrib.ticket.image %}
+                        <div class="row mt-2 mb-2">
+                            <div class="col-10">
+                                <img src="{{contrib.ticket.image.url}}"/>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                </div>
+            <div class="row justify-content-end mt-2 mb-2">
+                <div class="col-2">
+                    <a href="{% url 'edit-critics' contrib.id %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'delreview' contrib.id %}" class="btn btn-primary">Delete</a>
+                </div>
+            </div>
+            </div>
+        {% endif %}
+    <a class="" href="{% url 'flux' %}" >Return to your FLUX page</a>
+    {% endfor %}
+
+</div>
+{% endblock %}

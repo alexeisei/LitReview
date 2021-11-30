@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+<div>
+    <div class="align-middle text-center"><h1> Welcome to the subscription page !</h1>
+        <h1>Register now</h1></div>
+
+    <form method="POST" class="form-horizontal d-grid gap-3 ps-5">
+        <div class="d-grid gap-1">
+            {% csrf_token %}
+            <div class="mb-3">
+                {% csrf_token %}
+                {{ form.as_p }}
+            </div>
+        </div>
+        <div>
+            <a href="{% url 'home' %}" class="btn btn-outline-primary">Return to Home page</a>
+            <input type="submit" class="btn btn-primary" value="Sign up !"/>
+        </div>
+    </form>
+</div>
+{% endblock %}

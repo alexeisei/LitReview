@@ -1,0 +1,50 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container d-flex justify-content-center mb-3 mt-5">
+    <h3 class="titre"> Hello {{user.username.upper}}, welcome on your FLUX page </h3>
+</div>
+<div class="d-flex justify-content-around m-5">
+    <a class="btn btn-primary" href="{% url 'new-critic' %}">Create a new critic</a>
+    <a class="btn btn-primary" href="{% url 'new-ticket' %}">Create a new ticket</a>
+</div>
+
+{% for ticket in tickets %}
+<div class="container bg-white text-dark border border-dark border-5 mb-5 p-3">
+    <h3> Ticket</h3>
+    <p> Title : {{ ticket.title }}</p>
+    <p> Description : {{ ticket.description }}</p>
+    <p> Ticket from {{ ticket.user }}.</p>
+
+    {% if ticket.image %}
+    <img class="" src="../images/{{ ticket.image}}">
+    {% endif %}
+    <p> Created on : {{ ticket.time_created|date:'d/m/Y H:i' }}</p>
+    <a class="btn-add-critics" href="{% url 'answer-critic' ticket.id %}">Answer this ticket with a critic</a>
+</div>
+{% endfor %}
+
+{% for critique in critiques %}
+<div class="container bg-success text-dark border border-dark border-5 mb-5 p-3">
+    <h3> Critics</h3>
+    {% if critique.user.username == user.username %}
+    <p>You posted a critic</p>
+    {% else %}
+    <p> {{critique.user.username}} has posted a critic</p>
+    {% endif %}
+    <p> {{ critique.time_created|date:'d/m/Y H:i' }}</p>
+    <p> Headline: {{critique.headline.upper}} - Rating: {{critique.rating}}</p>
+    <p> {{ critique.body }}</p>
+    <div class="container bg-white text-dark border border-dark border-5 mb-5 p-3">
+        <p> Ticket from : {{ critique.ticket.user }}.</p>
+        <p> {{ critique.ticket.title }}</p>
+        <p> {{ critique.ticket.description }}</p>
+        {% if critique.ticket.image %}
+        <img class="" src="../images/{{ critique.ticket.image}}">
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

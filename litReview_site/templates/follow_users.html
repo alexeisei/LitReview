@@ -1,0 +1,52 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+
+<div class="row">
+    <div class="col-10 offset-1">
+        <div class="row text-center mb-3">
+            <h4>Follow other users</h4>
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="col-9 d-inline-block">
+                    <input class="form-control text-center" name="username" placeholder="User name" type="text">
+                </div>
+                <div class="col-2 d-inline-block">
+                    <button class="btn btn-primary">Send</button>
+                </div>
+            </form>
+        </div>
+        <div class="row text-center mb-3">
+            <h4>
+                <Subscriptions/>
+            </h4>
+            <table class="table table-sm table-bordered border-dark border-5">
+                <tbody>
+                {% for usersfollow in usersfollows %}
+                <tr>
+                    <td>{{ usersfollow.followed_user }}</td>
+                    <td><a class="btn btn-danger" href="{% url 'unfollow' usersfollow.id %}">Unfollow</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="row text-center">
+            <h4>Following you</h4>
+            <table class="table table-sm table-bordered border-dark border-5 text-start">
+                <tbody>
+                {% for followed in followeds %}
+                <tr>
+                    <td>{{ followed.user }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <a class="" href="{% url 'flux' %}">Return to your FLUX page</a>
+</div>
+
+
+{% endblock %}

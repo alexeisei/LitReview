@@ -1,0 +1,16 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <h1> {{user.username.upper}} You wish to create a new critic</h1>
+    <form class="post-form border border-dark border-5 p-3" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <p> Book / Article </p>
+        {{ form_tik.as_p }}
+        <p> Your critic </p>
+        {{ form_crit.as_p }}
+        <input type="submit" value="Confirm your critic">
+    </form>
+    <a class="" href="{% url 'flux' %}">Return to your FLUX page</a>
+</div>
+{% endblock %}

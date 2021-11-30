@@ -1,0 +1,16 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <h1 X> {{user.username.upper}} You wish to edit your ticket</h1>
+    <form enctype="multipart/form-data" method="POST" class="post-form border border-dark border-5 p-3">
+        {% csrf_token %}
+        <table>
+            {{edit_ticket_form.as_table}}
+        </table>
+        <input type="submit" value="Confirm your edit">
+    </form>
+    <a class="nav-link" href="{% url 'flux' %}" >Return to your FLUX page</a>
+    <a class="nav-link" href="{% url 'show-critics' %}">Return to your Posts</a>
+</div>
+{% endblock %}
