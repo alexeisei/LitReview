@@ -15,21 +15,21 @@ This is a web application that allows :
 
 - Download the ZIP files and unzip them in the repository you wish
 - Install venv by typing in your terminal :
-'''
-$ pip install venv
-'''
+```
+pip install venv
+```
 - Create de the virtual environement and lauch it by typing :
-'''
-$ python -m venv env
-'''
+```
+python -m venv env
+```
 and
-'''
-$ env\Scripts\activate
-'''
+```
+env\Scripts\activate
+```
 - install the packages by typing :
-'''
-$pip install -r requirements.txt
-'''
+```
+pip install -r requirements.txt
+```
 
 3. Launch the DJANGO server
 
